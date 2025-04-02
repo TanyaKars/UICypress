@@ -23,7 +23,7 @@
 #           name: e2e-pasv-screenshots
 #           path: cypress/results
 
-name: E2E Production
+name: E2E PASV
 on:
   push:
     branches:
@@ -53,6 +53,6 @@ jobs:
         if: failure()
         with:
           name: e2e-screenshots-${{ matrix.containers }}
-          path: ./cypress/results
+          path: cypress/results
  
  
