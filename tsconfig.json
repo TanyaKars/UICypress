@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "target": "ES2024",
+    "lib": ["ES2024", "dom"],
+    "types": ["cypress", "node", "cypress-real-events"],
+    "moduleResolution": "node",
+    "module": "commonjs",
+    "resolveJsonModule": true
+  },
+  "include": ["**/*.ts"]
+}
