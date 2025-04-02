@@ -53,6 +53,6 @@ jobs:
         if: failure()
         with:
           name: e2e-screenshots-${{ matrix.containers }}
-          path: ./e2e/cypress/results
+          path: ./cypress/results
  
  
