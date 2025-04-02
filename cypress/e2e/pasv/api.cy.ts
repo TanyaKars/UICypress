@@ -78,7 +78,7 @@ describe("API tests", () => {
     });
   });
 
-  it.only("Mock user data", () => {
+  it("Mock user data", () => {
     cy.request({
       method: "POST",
       url: "https://server-prod.pasv.us/user/login",

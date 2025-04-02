@@ -2,7 +2,7 @@ import { commonLocators } from "../../fixtures/common";
 import { loginPage, pasvLocators, data } from "../../fixtures/test-data";
 
 describe("Negative tests", () => {
-  it.only("Login with invalid credentials", () => {
+  it("Login with invalid credentials", () => {
     cy.login(data.invalid.email, `${Cypress.env("password")}1`);
     cy.get(pasvLocators.errors.loginMessage).should(
       "have.text",
