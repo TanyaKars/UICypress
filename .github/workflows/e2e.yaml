@@ -47,7 +47,7 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v6.7.0
         with:
-          spec: cypress/e2e/${{ matrix.containers }}.cy.ts
+          spec: cypress/e2e/pasv/${{ matrix.containers }}.cy.ts
       - name: Store screenshot artifacts
         uses: actions/upload-artifact@v4.3.4
         if: failure()
