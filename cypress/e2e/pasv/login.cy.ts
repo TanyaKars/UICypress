@@ -16,7 +16,7 @@ describe("Negative tests", () => {
 
 describe("Positive tests", () => {
   it("Login with valid credentials", () => {
-    cy.login(Cypress.env("email"), Cypress.env("password"));
+    cy.login(Cypress.env("password"), Cypress.env("password"));
     cy.get(commonLocators.h1).should("have.text", loginPage.name);
   });
 });

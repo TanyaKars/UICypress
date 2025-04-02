@@ -1,24 +1,58 @@
-name: E2E PASV
+# name: E2E PASV
+# on:
+#   push:
+#     branches:
+#       - main
+# jobs:
+#   pasv-tests:
+#     name: E2E PASV
+#     runs-on: ubuntu-latest
+#     strategy:
+#       fail-fast: false
+#     steps:
+#       - name: Checkout
+#         uses: actions/checkout@v4
+#       - name: Cypress run
+#         uses: cypress-io/github-action@v6
+#         with:
+#           spec: cypress/e2e/pasv/*.cy.ts
+#       - name: Store artifacts
+#         uses: actions/upload-artifact@v4
+#         if: failure()
+#         with:
+#           name: e2e-pasv-screenshots
+#           path: cypress/results
+
+name: E2E Production
 on:
   push:
     branches:
       - main
+  workflow_dispatch:
+run-name: 'E2E PROD'
 jobs:
   pasv-tests:
-    name: E2E PASV
+    name: PASV TESTS - PROD
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
+      matrix:
+        containers: [login, api]
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v4.1.7
+
+      # Install NPM dependencies, cache them correctly
+      # and run all Cypress tests
       - name: Cypress run
-        uses: cypress-io/github-action@v6
+        uses: cypress-io/github-action@v6.7.0
         with:
-          spec: cypress/e2e/pasv/*.cy.ts
-      - name: Store artifacts
-        uses: actions/upload-artifact@v4
+          spec: cypress/e2e/${{ matrix.containers }}.cy.ts
+      - name: Store screenshot artifacts
+        uses: actions/upload-artifact@v4.3.4
         if: failure()
         with:
-          name: e2e-pasv-screenshots
-          path: cypress/results
+          name: e2e-screenshots-${{ matrix.containers }}
+          path: ./e2e/cypress/results
+ 
+ 

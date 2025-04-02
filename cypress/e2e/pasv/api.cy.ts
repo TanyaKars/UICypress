@@ -14,7 +14,7 @@ describe("API tests", () => {
       url: "https://server-prod.pasv.us/user/login",
       body: {
         email: "romoxe8197@hartaria.com",
-        password: "Aa123123",
+        password: "Aa12323",
       },
     }).as("postLogin");
     // cy.get('@postLogin').its('status').should('eq', 200);
