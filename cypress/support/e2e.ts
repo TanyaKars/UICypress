@@ -10,6 +10,7 @@ declare global {
   namespace Cypress {
     interface Chainable {
       login(email: string, password: string): Cypress.Chainable<void>;
+      sessionLogin(email: string, password: string): Cypress.Chainable<void>;
       test(testData: ContactData): Cypress.Chainable<void>;
       getIframeBody(iframe: string): Cypress.Chainable<JQuery<HTMLElement>>;
     }

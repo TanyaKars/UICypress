@@ -11,6 +11,21 @@ Cypress.Commands.add("login", (email: string, password: string) => {
   cy.get(pasvLocators.buttons.submit).click();
 });
 
+Cypress.Commands.add("sessionLogin", (email: string, password: string) => {
+  cy.session(email, () => {
+    cy.request({
+      method: "POST",
+      url: "https://server-prod.pasv.us/user/login",
+      body: {
+        email: email,
+        password: password,
+      },
+    }).as("postLogin");
+    cy.get("@postLogin").its("status").should("eq", 200);
+  });
+  cy.visit("/");
+});
+
 Cypress.Commands.add("getIframeBody", (iframe: string) => {
   return cy
     .get(iframe)

@@ -13,7 +13,6 @@ export interface ContactData {
   };
 }
 
-
 export interface UserData {
   emailConfirmation?: {
     confirmed: boolean;
@@ -67,4 +66,3 @@ export interface UserData {
   createdAt?: string;
   updatedAt?: string;
 }
-

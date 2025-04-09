@@ -29,7 +29,7 @@ on:
     branches:
       - main
   workflow_dispatch:
-run-name: 'E2E PROD'
+run-name: "E2E PROD"
 jobs:
   pasv-tests:
     name: PASV TESTS - PROD
@@ -54,5 +54,3 @@ jobs:
         with:
           name: e2e-screenshots-${{ matrix.containers }}
           path: cypress/results
- 
- 

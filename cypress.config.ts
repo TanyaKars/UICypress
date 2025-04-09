@@ -4,7 +4,9 @@ export default defineConfig({
   watchForFileChanges: false,
   chromeWebSecurity: false,
   experimentalWebKitSupport: true,
-  screenshotsFolder: 'cypress/results',
+  screenshotsFolder: "cypress/results",
+  viewportHeight: 1500,
+  viewportWidth: 1800,
   e2e: {
     baseUrl: "https://coding.pasv.us",
     env: {

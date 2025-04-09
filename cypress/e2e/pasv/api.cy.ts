@@ -1,4 +1,4 @@
-import { UserData } from '../../interface/interface';
+import { UserData } from "../../interface/interface";
 
 const userId: string = "67c761439f09318cd7245231";
 let cookie: string;
@@ -13,8 +13,8 @@ describe("API tests", () => {
       method: "POST",
       url: "https://server-prod.pasv.us/user/login",
       body: {
-        email: "romoxe8197@hartaria.com",
-        password: "Aa12323",
+        email: Cypress.env("email"),
+        password: Cypress.env("password"),
       },
     }).as("postLogin");
     // cy.get('@postLogin').its('status').should('eq', 200);
@@ -33,8 +33,8 @@ describe("API tests", () => {
       method: "POST",
       url: "https://server-prod.pasv.us/user/login",
       body: {
-        email: "romoxe8197@hartaria.com",
-        password: "Aa123123",
+        email: Cypress.env("email"),
+        password: Cypress.env("password"),
       },
     }).as("postLogin");
 
@@ -50,8 +50,8 @@ describe("API tests", () => {
       method: "POST",
       url: "https://server-prod.pasv.us/user/login",
       body: {
-        email: "romoxe8197@hartaria.com",
-        password: "Aa123123",
+        email: Cypress.env("email"),
+        password: Cypress.env("password"),
       },
     }).as("postLogin");
 
@@ -83,19 +83,19 @@ describe("API tests", () => {
       method: "POST",
       url: "https://server-prod.pasv.us/user/login",
       body: {
-        email: "romoxe8197@hartaria.com",
-        password: "Aa123123",
+        email: Cypress.env("email"),
+        password: Cypress.env("password"),
       },
     }).as("postLogin");
     cy.get("@postLogin").its("status").should("be.oneOf", [200, 201, 204]);
-    cy.intercept('GET', `https://server-prod.pasv.us/user/${userId}`, {
-        payload: {
-            name: 'Tanya Karsova'
-        } as UserData
-    }).as('mockUser')
+    cy.intercept("GET", `https://server-prod.pasv.us/user/${userId}`, {
+      payload: {
+        name: "Tanya Karsova",
+      } as UserData,
+    }).as("mockUser");
 
-    cy.visit(`/profile/${userId}`)
-    cy.wait('@mockUser')
-    cy.get('h1').should('have.text', 'Tanya Karsova')
+    cy.visit(`/profile/${userId}`);
+    cy.wait("@mockUser");
+    cy.get("h1").should("have.text", "Tanya Karsova");
   });
 });
